@@ -7,13 +7,23 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.2.2 <4.0.0"
+  sdk: ">=3.2.3 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
+  # Dependencias para el manejo de UI, Iconos y Material Design
   cupertino_icons: ^1.0.8
+
+  # Dependencias para el manejo de estado para la network consumo de requests API's
+  http: ^1.1.0
+
+  # Base de datos o storage
+  shared_preferences: ^2.2.2
+
+  #tiempo y fecha
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
