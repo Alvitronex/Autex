@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:autex/utils/utils.dart';
+import 'package:autex/screens/screens.dart';
 
 void main() => runApp(AutexApp());
 
