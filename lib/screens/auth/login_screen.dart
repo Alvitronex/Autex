@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         _isLoading = false;
       });
-      _showMessage('Inicio de sesión exitoso', isError: false);
+      // _showMessage('Inicio de sesión exitoso', isError: false);
 
 // Verificar credenciales de prueba
       if (email == AppConstants.testEmail &&
@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
 // Navegar a la pantalla del dashboard
         Future.delayed(Duration(seconds: 1), () {
-          Navigator.pushReplacement(
+          Navigator.push(
             // ignore: use_build_context_synchronously
             context,
             MaterialPageRoute(builder: (context) => DashboardScreen()),
@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.grey[50],
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(24),
@@ -102,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               // Titulo
               Text(
-                'Bienvenido',
+                'Bienvenido a Autex',
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
 
-              SizedBox(height: 8),
+              SizedBox(height: 17),
 
               //Campos de texto
               _buildEmailField(),
@@ -139,13 +139,15 @@ class _LoginScreenState extends State<LoginScreen> {
       controller: _emailController,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-        labelText: 'Email',
+        labelText: 'Correo Electrónico',
         prefixIcon: Icon(Icons.email),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        filled: true,
-        fillColor: Colors.white,
+        filled: true, // Campo con fondo blanco
+        fillColor: Colors.white, // Color de fondo del campo
+        hintText: 'Ingrese su correo electrónico',
+        hintStyle: TextStyle(color: Colors.grey[600]),
       ),
     );
   }
@@ -155,23 +157,25 @@ class _LoginScreenState extends State<LoginScreen> {
       controller: _passwordController,
       obscureText: _obscurePassword,
       decoration: InputDecoration(
-          labelText: 'Contraseña',
-          prefixIcon: Icon(Icons.lock),
-          suffixIcon: IconButton(
-            icon: Icon(
-              _obscurePassword ? Icons.visibility : Icons.visibility_off,
-            ),
-            onPressed: () {
-              setState(() {
-                _obscurePassword = !_obscurePassword;
-              });
-            },
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          filled: true,
-          fillColor: Colors.white),
+        labelText: 'Contraseña',
+        prefixIcon: Icon(Icons.lock),
+        suffixIcon: IconButton(
+          icon:
+              Icon(_obscurePassword ? Icons.visibility : Icons.visibility_off),
+          onPressed: () {
+            setState(() {
+              _obscurePassword = !_obscurePassword;
+            });
+          },
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        filled: true,
+        fillColor: Colors.white,
+        hintText: 'Ingrese su contraseña',
+        hintStyle: TextStyle(color: Colors.grey[600]),
+      ),
     );
   }
 
@@ -180,16 +184,20 @@ class _LoginScreenState extends State<LoginScreen> {
       width: double.infinity,
       height: 50,
       child: ElevatedButton(
-        onPressed: _isLoading ? null : _login,
+        // usando un diseno mas tipo metraildesing 3
+        onPressed: _isLoading
+            ? null
+            : _login, // cambiar la ejecucion del boton si esta cargando
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color(AppConstants.primaryColor),
+          backgroundColor: Color(AppConstants.secondColor),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
         ),
         child: _isLoading
             ? CircularProgressIndicator(
-                color: Colors.white,
+                // Indicador de carga
+                color: Colors.blue,
               )
             : Text(
                 'Iniciar Sesión',
@@ -216,8 +224,8 @@ class _LoginScreenState extends State<LoginScreen> {
           Text(
             'Datos de prueba unitaria:',
             style: TextStyle(
-              color: Colors.blue[800],
               fontWeight: FontWeight.bold,
+              color: Colors.blue[800],
             ),
           ),
           SizedBox(height: 8),
