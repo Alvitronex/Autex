@@ -7,6 +7,7 @@ class AppConstants {
   static const int secondColor = 0xFF4CAF50; // Verde
   static const int errorColor = 0xFFF44336; // Rojo
   static const int backgroundButton = 0xFFEEEEEE; // Gris claro
+  static const String logoUrl = 'assets/logo.png';
 
   // Mensajes básicos
   static const String welcomeMessage = 'Bienvenido a $appName';

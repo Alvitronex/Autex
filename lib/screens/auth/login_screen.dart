@@ -83,48 +83,74 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: Colors.blueGrey[50],
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(24),
           child: Column(
             children: [
-              SizedBox(height: 60),
-
+              SizedBox(height: 20),
               // Logo
               Icon(
                 Icons.directions_car,
                 size: 80,
                 color: Color(AppConstants.primaryColor),
               ),
-
               SizedBox(height: 20),
-
-              // Titulo
-              Text(
-                'Bienvenido a Autex',
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey[800],
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Buen día',
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey[800],
+                  ),
                 ),
               ),
+              // Titulo
 
-              SizedBox(height: 17),
+              Text(
+                'Iniciar sesión para continuar y registrar tu vehículo',
+                style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  fontSize: 16,
+                  color: Colors.grey[600],
+                ),
+                textAlign: TextAlign.center,
+              ),
 
-              //Campos de texto
-              _buildEmailField(),
-              SizedBox(height: 16),
-              // Campo de contraseña
-              _buildPasswordField(),
-              SizedBox(height: 32),
-
-              // Boton de inicio de sesión
-              _buildLoginButton(),
-              SizedBox(height: 24),
-
-              //informacion pra pruebas
-              _buildTestInfo(),
+              SizedBox(height: 60),
+              Container(
+                padding: EdgeInsets.all(32.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16.0),
+                  boxShadow: [
+                    BoxShadow(
+                      // ignore: deprecated_member_use
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 20,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  // mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    _buildEmailField(),
+                    SizedBox(height: 30),
+                    _buildPasswordField(),
+                    SizedBox(height: 10),
+                    _buildForgetPasswordField(),
+                    SizedBox(height: 10),
+                    _buildLoginButton(),
+                    SizedBox(height: 20),
+                    _buildRegisterButton(),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -140,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         labelText: 'Correo Electrónico',
-        prefixIcon: Icon(Icons.email),
+        prefixIcon: Icon(Icons.email_outlined),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
         ),
@@ -158,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
       obscureText: _obscurePassword,
       decoration: InputDecoration(
         labelText: 'Contraseña',
-        prefixIcon: Icon(Icons.lock),
+        prefixIcon: Icon(Icons.lock_outlined),
         suffixIcon: IconButton(
           icon:
               Icon(_obscurePassword ? Icons.visibility : Icons.visibility_off),
@@ -242,4 +268,44 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+}
+
+Widget _buildForgetPasswordField() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.end,
+    children: [
+      TextButton(
+        onPressed: () {
+          // Acción para recuperar contraseña
+        },
+        child: Text(
+          '¿Olvidé mi contraseña?',
+          style: TextStyle(
+            color: Color(AppConstants.primaryColor),
+            fontSize: 16,
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget _buildRegisterButton() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text('¿No tienes cuenta?'),
+      TextButton(
+        onPressed: () {},
+        child: Text(
+          'Registrarse',
+          style: TextStyle(
+            color: Color(AppConstants.primaryColor),
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    ],
+  );
 }

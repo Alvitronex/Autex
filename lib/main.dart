@@ -16,11 +16,11 @@ class AutexApp extends StatelessWidget {
       title: AppConstants.appName,
       // Definir tema para la app
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        // primarySwatch: Colors.blue,
         visualDensity:
             VisualDensity.adaptivePlatformDensity, // Densidad visual adaptativa
       ),
-      home: LoginScreen(),
+      home: HomeLoginScreen(),
     );
   }
 }
