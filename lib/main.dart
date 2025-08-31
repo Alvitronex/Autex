@@ -20,7 +20,7 @@ class AutexApp extends StatelessWidget {
         visualDensity:
             VisualDensity.adaptivePlatformDensity, // Densidad visual adaptativa
       ),
-      home: HomeLoginScreen(),
+      home: LoginScreen(),
     );
   }
 }
